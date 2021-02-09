@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>w++ as a service</title>
+        <link rel="stylesheet" href="dropzone.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <form action="/api" class="dropzone" id="wotppDropzone"></form>
+        <script src="dropzone.js"></script>
+        <script>
+            var saveData = (function () {
+                    var a = document.createElement("a");
+                    document.body.appendChild(a);
+                    a.style = "display: none";
+                    return function (data, fileName) {
+                        blob = new Blob([data], {type: "text/plain"}),
+                        url = window.URL.createObjectURL(blob);
+                        a.href = url;
+                        a.download = fileName;
+                        a.click();
+                        window.URL.revokeObjectURL(url);
+                    };
+            }());
+            Dropzone.options.wotppDropzone = {
+                  paramName: "data",
+                  maxFilesize: 2,
+                  init: function() {
+                      this.on("success", function(file, response) {
+                            saveData(response, file.name + ".out");
+                      });
+                  }
+            };
+        </script>
+    </body>
+</html>
