@@ -1,36 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
         <title>w++ as a service</title>
-        <link rel="stylesheet" href="dropzone.css">
-        <link rel="stylesheet" href="style.css">
+
+        <link href="jquery.dm-uploader.css" rel="stylysheet">
+        <link href="styles.css" rel="stylesheet">
     </head>
+
     <body>
-        <form action="/api" class="dropzone" id="wotppDropzone"></form>
-        <script src="dropzone.js"></script>
-        <script>
-            var saveData = (function () {
-                    var a = document.createElement("a");
-                    document.body.appendChild(a);
-                    a.style = "display: none";
-                    return function (data, fileName) {
-                        blob = new Blob([data], {type: "text/plain"}),
-                        url = window.URL.createObjectURL(blob);
-                        a.href = url;
-                        a.download = fileName;
-                        a.click();
-                        window.URL.revokeObjectURL(url);
-                    };
-            }());
-            Dropzone.options.wotppDropzone = {
-                  paramName: "data",
-                  maxFilesize: 2,
-                  init: function() {
-                      this.on("success", function(file, response) {
-                            saveData(response, file.name + ".out");
-                      });
-                  }
-            };
+        <main role="main">
+            <h1>w++ as a service</h1>
+
+            <div id="drag-and-drop-zone" class="dm-uploader">
+                <div class="btn btn-primary btn-block mb-5">
+                    <span>Open the file Browser</span>
+                    </br>
+                    <input type="file" title='Click to add Files' />
+                </div>
+            </div>
+
+            <div>
+                <h2>File list</h2>
+                <ul id="files">
+                    <li class="empty">No files uploaded</li>
+                </ul>
+            </div>
+
+            <div>
+                <h2>Messages</h2>
+                <ul id="debug">
+                    <li class="empty">Loading plugin....</li>
+                </ul>
+            </div>
+        </main>
+
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script src="save.js"></script>
+        <script src="jquery.dm-uploader.js"></script>
+        <script src="ui.js"></script>
+        <script src="config.js"></script>
+
+        <script type="text/html" id="files-template">
+            <li class="media">
+                <div>
+                    <p>
+                        <strong>%%filename%%</strong> - Status: <span>Waiting</span>
+                    </p>
+                    <hr/>
+                </div>
+            </li>
+        </script>
+
+        <script type="text/html" id="debug-template">
+            <li class="list-group-item text-%%color%%"><strong>%%date%%</strong>: %%message%%</li>
         </script>
     </body>
 </html>
