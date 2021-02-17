@@ -1,40 +1,157 @@
-/* 
-	A couple styles to make the demo page look good
- */
+@font-face{
+    font-family: 'JetBrains Mono';
+    src: url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/webfonts/JetBrainsMono-Regular.woff2') format('woff2'),
+         url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/fonts/ttf/JetBrainsMono-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+	font-family: 'JetBrains Mono';
+
+	/* For firefox */
+	scrollbar-width: thin;
+	scrollbar-color: black white;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	width: 12px;
+}
+
+*::-webkit-scrollbar-track {
+	background: white;
+}
+
+*::-webkit-scrollbar-thumb {
+	background-color: black;
+	border-radius: 20px;
+	border: 3px solid white;
+}
+
+html {
+	height: 100vh;
+	margin: 0;
+	padding: 0;
+}
+
 body {
-	padding-bottom: 2rem;
-	padding-top: 4rem;
+	margin: 0;
+	padding: 0;
+	height:100%;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
 }
-.row {
-	margin-bottom: 1rem;
+
+header {
+	padding-left: 100px;
+	height: 100px;
 }
-hr {
-	margin-top: 2rem;
-	margin-bottom: 2rem;
+
+main {
+	height: 100%;
+	padding: 10px;
+
+	display: flex;
+	flex-direction: row;
 }
-#files {
-    overflow-y: scroll !important;
-    min-height: 320px;
+
+.outer {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
 }
-@media (min-width: 768px) {
-	#files {
-		min-height: 0;
-	}
-}
-#debug {
-	overflow-y: scroll !important;
-	height: 180px;	
+
+.inner {
+	margin:10px;
+	height:100%;
+	display: flex;
+	flex-direction: row;
+	padding-right:20px;
+
 }
 
 .dm-uploader {
-    border-style: solid;
-	border-color: black;
-	text-align: center;
+	flex-grow: 1;
+	padding:20px;
+	border:dashed #444 2px;
 }
+
 .dm-uploader.active {
-	border-color: red;
-	border-style: solid;
+	border:dashed #444 2px;
 }
+
+.btn {
+	width:100%;
+	height:100%;
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.hidden {
+	display:none;
+}
+
+.info {
+	padding:20px;
+	margin-top:-30px;
+	width:400px;
+}
+
+.info > p {
+	margin-left:20px;
+}
+
+.file-list {
+	width: 520px;
+}
+
+.message-list {
+	height: 250px;
+	margin: 10px;
+	padding: 10px;
+	padding-left:20px;
+}
+
+#debug {
+	overflow: auto;
+	max-height: 150px;
+	height:150px;
+	padding:20px;
+	padding-top: 0px;
+	list-style-type:none;
+}
+
+#files {
+	overflow: auto;
+	max-height: 650px;
+	list-style-type:none;
+	padding-left: 20px;
+}
+
 .text-danger {
     color: red;
+}
+
+#github {
+	position:fixed;
+    bottom:0;
+    right:0;
+	margin: 5px;
+}
+
+a {
+	text-decoration: none;
+	font-weight: bold;
+	color:#000;
+}
+
+a:visited {
+	text-decoration: none;
+	font-weight: bold;
+	color:#333;
 }

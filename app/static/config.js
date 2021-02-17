@@ -50,7 +50,8 @@ $(function(){
       if(xhr.responseText != null) {
         message = xhr.responseText;
       }
-      ui_multi_update_file_status(id, 'danger', message);
+      ui_add_log('#' + id + ' ' + message, 'danger');
+      ui_multi_update_file_status(id, 'danger', 'Error');
       ui_multi_update_file_progress(id, 0, 'danger', false);  
     },
     onFallbackMode: function(){

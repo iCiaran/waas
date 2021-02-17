@@ -4,38 +4,54 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>w++ as a service</title>
+        <title>wot++ as a service</title>
 
-        <link href="jquery.dm-uploader.css" rel="stylysheet">
         <link href="styles.css" rel="stylesheet">
     </head>
-
     <body>
-        <main role="main">
-            <h1>w++ as a service</h1>
+        <header>
+            <h1>wot++ as a service</h1>
+        </header>
 
-            <div id="drag-and-drop-zone" class="dm-uploader">
-                <div class="btn btn-primary btn-block mb-5">
-                    <span>Open the file Browser</span>
-                    </br>
-                    <input type="file" title='Click to add Files' />
+        <main>
+            <div class="outer">
+                <div class="inner">
+                    <div class="info">
+                        <h2>About</h2>
+                        <p><a href="https://github.com/Jackojc/wotpp">Wot++</a> is a language created by <a href="https://github.com/Jackojc">Jackojc</a> for writing documents that allows you to build up your own library of abstractions or use those made by others.</p>
+                        <p>The language has some interesting features like meta-programming, the ability to invoke a shell, bit-level manipulation, recursion and conditionals.</p>
+                        <p>You can find out more about Wot++ on <a href="https://github.com/Jackojc/wotpp">github</a>.</p>
+                        <p>Upload a wot++ file to this site (supports drag and drop/multiple uploads) to receive the compiled output.</p>
+                    </div>
+                    <div id="drag-and-drop-zone" class="dm-uploader">
+                        <div class="btn">
+                            
+                            <input type="file" id="upload" class="hidden"/>
+                            <label for="upload">
+                                <figure>
+                                    <svg width="80" height="80" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title/><g data-name="Layer 2" id="Layer_2"><path d="M4,2V22H20V7.59L14.41,2ZM14.29,14.71,13,13.41V18H11V13.41l-1.29,1.3L8.29,13.29,12,9.59l3.71,3.7ZM15,5.41,16.59,7H15Z"/></g></svg>
+                                </figure>
+                                <h3>Upload wot++ here</h3>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="message-list">
+                    <h2>Messages</h2>
+                    <ul id="debug">
+                        <li class="empty">Loading plugin....</li>
+                    </ul>
                 </div>
             </div>
-
-            <div>
-                <h2>File list</h2>
+            <div class="file-list">
+                <h2>Uploads</h2>
                 <ul id="files">
                     <li class="empty">No files uploaded</li>
                 </ul>
             </div>
 
-            <div>
-                <h2>Messages</h2>
-                <ul id="debug">
-                    <li class="empty">Loading plugin....</li>
-                </ul>
-            </div>
         </main>
+        <a id="github" href="https://github.com/iCiaran/waas"><img width="40" height="40" src="GitHub-Mark-64px.png"/></a>
 
         <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
         <script src="save.js"></script>
