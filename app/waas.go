@@ -55,7 +55,7 @@ func wotpp(w http.ResponseWriter, r *http.Request) {
 	ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)
 	defer cancel()
 
-	cmd := exec.CommandContext(ctx, "w++", f.Name())
+	cmd := exec.CommandContext(ctx, "w++", "-i", f.Name())
 
 	out, err := cmd.Output()
 	if ctx.Err() == context.DeadlineExceeded {
